@@ -1,9 +1,11 @@
 import Image from "next/image"
+import Link from "next/link"
+
 const LOGO_URL = '/next.svg'
 
 export const Logo = () => {
     return (
-        <div>
+        <Link href="/">
             <Image 
                 src={LOGO_URL} 
                 alt="Ucombinator" 
@@ -12,6 +14,6 @@ export const Logo = () => {
                 className="w-1/3 h-1/3"
                 priority
               />
-        </div>
+        </Link>
     )
 }
