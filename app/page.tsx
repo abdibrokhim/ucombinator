@@ -1,15 +1,5 @@
 'use client'
-import Image from 'next/image'
 import { motion } from 'motion/react'
-import { XIcon, ArrowRight } from 'lucide-react'
-import {
-  MorphingDialog,
-  MorphingDialogTrigger,
-  MorphingDialogContent,
-  MorphingDialogClose,
-  MorphingDialogContainer,
-} from '@/components/ui/morphing-dialog'
-import Link from 'next/link'
 import {
   LATEST_NEWS,
 } from './data'
@@ -33,7 +23,6 @@ const VARIANTS_SECTION = {
 const TRANSITION_SECTION = {
   duration: 0.3,
 }
-
 
 export default function Home() {
   return (

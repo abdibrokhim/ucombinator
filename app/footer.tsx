@@ -1,7 +1,5 @@
 'use client'
 
-import { TextLoop } from '@/components/ui/text-loop'
-
 const FOOTER_LINKS = [
   {
     label: 'Programs',
@@ -77,6 +75,9 @@ export function Footer() {
             </ul>
           </div>
         ))}
+      </div>
+      <div className="text-xs text-zinc-500 mt-8 font-thin">
+        <p>© 2025 UCombinator.</p>
       </div>
     </footer>
   )

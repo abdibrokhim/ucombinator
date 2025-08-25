@@ -17,10 +17,10 @@ export const metadata: Metadata = {
     canonical: '/'
   },
   title: {
-    default: 'Nim - Personal website template',
-    template: '%s | Nim'
+    default: 'UCombinator - Your bridge to the US market',
+    template: 'UCombinator - %s'
   },
-  description:  'Nim is a free and open-source personal website template built with Next.js 15, React 19 and Motion-Primitives.',
+  description: 'A simple three-step process: apply, prepare, and pitch to US investors. We guide you through each stage.',
 };
 
 const geist = Geist({
