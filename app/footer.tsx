@@ -1,84 +1,82 @@
 'use client'
-import { AnimatedBackground } from '@/components/ui/animated-background'
-import { TextLoop } from '@/components/ui/text-loop'
-import { MonitorIcon, MoonIcon, SunIcon } from 'lucide-react'
-import { useTheme } from 'next-themes'
-import { useEffect, useState } from 'react'
 
-const THEMES_OPTIONS = [
+import { TextLoop } from '@/components/ui/text-loop'
+
+const FOOTER_LINKS = [
   {
-    label: 'Light',
-    id: 'light',
-    icon: <SunIcon className="h-4 w-4" />,
+    label: 'Programs',
+    links: [
+      {
+        label: 'UC Program',
+        href: '/uc-program',
+      },
+      {
+        label: 'Startup School',
+        href: '/startup-school',
+      },
+      {
+        label: 'Work at Startup',
+        href: '/work-at-startup',
+      },
+      {
+        label: 'Co-Founder Matching',
+        href: '/co-founder-matching',
+      },
+    ],
   },
   {
-    label: 'Dark',
-    id: 'dark',
-    icon: <MoonIcon className="h-4 w-4" />,
+    label: 'Company',
+    links: [
+      {
+        label: 'Contact',
+        href: '/contact',
+      },
+      {
+        label: 'Privacy Policy',
+        href: '/privacy-policy',
+      },
+      {
+        label: 'Terms of Service',
+        href: '/terms-of-service',
+      },
+    ],
   },
   {
-    label: 'System',
-    id: 'system',
-    icon: <MonitorIcon className="h-4 w-4" />,
+    label: 'Resources',
+    links: [
+      {
+        label: 'Startup Directory',
+        href: '/startup-directory',
+      },
+      {
+        label: 'Startup Library',
+        href: '/startup-library',
+      },
+      {
+        label: 'Investors',
+        href: '/investors',
+      },
+    ],
   },
 ]
 
-function ThemeSwitch() {
-  const [mounted, setMounted] = useState(false)
-  const { theme, setTheme } = useTheme()
-
-  useEffect(() => {
-    setMounted(true)
-  }, [])
-
-  if (!mounted) {
-    return null
-  }
-
-  return (
-    <AnimatedBackground
-      className="pointer-events-none rounded-lg bg-zinc-100 dark:bg-zinc-800"
-      defaultValue={theme}
-      transition={{
-        type: 'spring',
-        bounce: 0,
-        duration: 0.2,
-      }}
-      enableHover={false}
-      onValueChange={(id) => {
-        setTheme(id as string)
-      }}
-    >
-      {THEMES_OPTIONS.map((theme) => {
-        return (
-          <button
-            key={theme.id}
-            className="inline-flex h-7 w-7 items-center justify-center text-zinc-500 transition-colors duration-100 focus-visible:outline-2 data-[checked=true]:text-zinc-950 dark:text-zinc-400 dark:data-[checked=true]:text-zinc-50"
-            type="button"
-            aria-label={`Switch to ${theme.label} theme`}
-            data-id={theme.id}
-          >
-            {theme.icon}
-          </button>
-        )
-      })}
-    </AnimatedBackground>
-  )
-}
-
 export function Footer() {
   return (
-    <footer className="mt-24 border-t border-zinc-100 px-0 py-4 dark:border-zinc-800">
-      <div className="flex items-center justify-between">
-        <a href="https://github.com/ibelick/nim" target="_blank">
-          <TextLoop className="text-xs text-zinc-500">
-            <span>© 2024 Nim.</span>
-            <span>Built with Motion-Primitives.</span>
-          </TextLoop>
-        </a>
-        <div className="text-xs text-zinc-400">
-          <ThemeSwitch />
-        </div>
+    <footer className="mt-24 px-4 pt-4 pb-24 md:px-12 md:py-12 px-0 py-4 dark:border-zinc-800">
+      <div className="w-full h-px bg-zinc-200 dark:bg-zinc-800 mb-4 md:mb-8"></div>
+      <div className="flex items-start grid grid-cols-2 md:grid-cols-3 gap-8 font-extralight">
+        {FOOTER_LINKS.map((section) => (
+          <div key={section.label}>
+            <h3 className="text-sm font-medium text-zinc-500 uppercase mb-4 text-sm">{section.label}</h3>
+            <ul className="space-y-2 text-sm">
+              {section.links.map((link) => (
+                <li key={link.label}>
+                  <a href={link.href} className="text-sm text-zinc-500 hover:text-zinc-700">{link.label}</a>
+                </li>
+              ))}
+            </ul>
+          </div>
+        ))}
       </div>
     </footer>
   )
